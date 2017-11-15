@@ -1,6 +1,6 @@
 defmodule CliTest do
   use ExUnit.Case
-  doctest M3uCreator
+  doctest M3uCreator.CLI
 
   import M3uCreator.CLI, only: [ parse_args: 1 ]
 
