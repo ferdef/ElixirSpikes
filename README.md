@@ -4,7 +4,7 @@ This tiny tool is intended to create a m3u file from a set of folders in a root
 directory.
 
 I first created this as a ruby script as I used it to create m3u files for my
-car audio system. Doing it in Elixir seemed a good idea to learn.
+car audio system. Doing it in Elixir seemed a good idea to learn from.
 
 ## Installation
 
