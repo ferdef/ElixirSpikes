@@ -8,6 +8,7 @@ defmodule M3uCreator.CLI do
                                      aliases:  [ h:    :help   ])
     case parse do
       { [ help: true ], _, _ } -> :help
+      { _, [path], _ } -> path
       _ -> :help
     end
   end

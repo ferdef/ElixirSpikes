@@ -8,4 +8,8 @@ defmodule CliTest do
     assert parse_args(["-h",     "anything"]) == :help
     assert parse_args(["--help", "anything"]) == :help
   end
+
+  test "path returned by option parsing when path is passed" do
+    assert parse_args(["./"]) == "./"
+  end
 end

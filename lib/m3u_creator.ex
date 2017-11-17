@@ -16,9 +16,13 @@ defmodule M3uCreator do
 
   defp process(:help) do
     IO.puts """
-    
+
       usage:  m3u_creator <path>
     """
     System.halt
+  end
+
+  defp process(path) do
+    IO.puts "Path #{path} provided"
   end
 end
