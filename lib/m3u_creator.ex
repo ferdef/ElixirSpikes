@@ -23,6 +23,6 @@ defmodule M3uCreator do
   end
 
   defp process(path) do
-    IO.puts "Path #{path} provided"
+    
   end
 end

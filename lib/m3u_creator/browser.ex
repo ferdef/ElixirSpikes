@@ -10,4 +10,10 @@ defmodule M3uCreator.Browser do
       true -> []
     end
   end
+
+  def ls_folder(path \\ ".") do
+    File.ls!(path)
+    |> Enum.map(&Path.join(path, &1))
+    |> Enum.filter(&File.dir?(&1))
+  end
 end
