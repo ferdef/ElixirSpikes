@@ -9,6 +9,16 @@ defmodule M3uCreator do
   App entry point.
   """
   def main(argv) do
-    M3uCreator.CLI.parse_args(argv)
+    argv
+    |> parse_args
+    |> process
+  end
+
+  defp process(:help) do
+    IO.puts """
+    
+      usage:  m3u_creator <path>
+    """
+    System.halt
   end
 end

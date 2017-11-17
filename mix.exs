@@ -28,6 +28,6 @@ defmodule M3uCreator.Mixfile do
   end
 
   defp escript_config do
-    [ main_module: M3uCreator.CLI ]
+    [ main_module: M3uCreator ]
   end
 end
