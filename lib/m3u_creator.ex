@@ -4,7 +4,7 @@ defmodule M3uCreator do
   """
   import M3uCreator.CLI, only: [ parse_args: 1 ]
   import M3uCreator.Browser, only: [ ls_r: 1, ls_folder: 1 ]
-  import M3uCreator.Writer, only: [ write: 2 ]
+  import M3uCreator.Writer, only: [ write: 3 ]
 
   @doc """
   App entry point.
@@ -28,7 +28,7 @@ defmodule M3uCreator do
     |> ls_folder
     |> Enum.each(fn folder->
       IO.puts("Processing #{folder}")
-      ls_r(folder) |> write(folder <> ".m3u")
+      ls_r(folder) |> write(folder, ".m3u")
     end)
   end
 end

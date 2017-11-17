@@ -9,7 +9,7 @@ defmodule M3uCreator.CLI do
     case parse do
       { [ help: true ], _, _ } -> :help
       { _, [path], _ } -> path
-      _ -> :help
+      _ -> "."
     end
   end
 end
