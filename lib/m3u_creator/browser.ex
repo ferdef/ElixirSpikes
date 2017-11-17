@@ -1,23 +1,13 @@
 defmodule M3uCreator.Browser do
-  def files(path, files_list) do
-    File.ls(path)
-    |> case do
-      {:ok, content} ->
-        content
-        |> Enum.each(fn x ->
-          case File.stat(x) do
-            {:ok, content} ->
-              case content do
-                %{type: :regular}} ->
-                  files_list = files_list ++ x
-                %{type: :directory}} ->
-                  files(x, files_list)
-              end
-            {:error, _} -> IO.puts("Error")
-          end
-        end)
-      {:error, _} -> files_list
+  def ls_r(path \\ ".") do
+    cond do
+      File.regular?(path) -> [path]
+      File.dir?(path) ->
+        File.ls!(path)
+        |> Enum.map(&Path.join(path, &1))
+        |> Enum.map(&ls_r/1)
+        |> Enum.concat
+      true -> []
     end
-    files_list
   end
 end
