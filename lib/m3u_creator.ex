@@ -23,6 +23,10 @@ defmodule M3uCreator do
     System.halt
   end
 
+  defp process({path, :concurrent}) do
+    IO.puts "concurrent #{path}"
+  end
+
   defp process(path) do
     path
     |> ls_folder
