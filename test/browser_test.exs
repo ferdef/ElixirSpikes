@@ -5,7 +5,7 @@ defmodule BrowserTest do
   import M3uCreator.Browser, only: [ ls_r: 1, ls_folder: 1 ]
 
   test "returning a complete tree map fo test subfolder" do
-    results = ["./test/test_dir/a.txt", "./test/test_dir/b.txt", "./test/test_dir/subdir/c.txt"]
+    results = ["./test/test_dir/a.mp3", "./test/test_dir/subdir/c.mp3"]
     assert ls_r("./test/test_dir") == results
   end
 
