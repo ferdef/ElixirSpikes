@@ -31,8 +31,7 @@ defmodule M3uCreator do
     |> ls_folder
     |> Enum.map(fn folder->
       Task.async(fn ->
-        IO.puts("Processing #{folder}")
-        ls_r(folder) |> write(folder, ".m3u")
+        m3u_create(folder)
       end)
     end)
     |> Task.yield_many
@@ -42,8 +41,7 @@ defmodule M3uCreator do
     path
     |> ls_folder
     |> Enum.each(fn folder->
-      IO.puts("Processing #{folder}")
-      ls_r(folder) |> write(folder, ".m3u")
+      m3u_create(folder)
     end)
   end
 
