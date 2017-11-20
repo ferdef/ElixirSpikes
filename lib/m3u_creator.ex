@@ -29,20 +29,14 @@ defmodule M3uCreator do
     IO.puts "concurrent #{path}"
     path
     |> ls_folder
-    |> Enum.map(fn folder->
-      Task.async(fn ->
-        m3u_create(folder)
-      end)
-    end)
+    |> Enum.map(&Task.async(fn -> m3u_create(&1) end))
     |> Task.yield_many
   end
 
   defp process(path) do
     path
     |> ls_folder
-    |> Enum.each(fn folder->
-      m3u_create(folder)
-    end)
+    |> Enum.each(fn folder->m3u_create(folder) end)
   end
 
   def m3u_create(folder) do
