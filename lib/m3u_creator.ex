@@ -18,7 +18,9 @@ defmodule M3uCreator do
   defp process(:help) do
     IO.puts """
 
-      usage:  m3u_creator <path>
+      usage:  m3u_creator [-c|--concurrent] <path>
+
+      -c concurrently process each folder
     """
     System.halt
   end
