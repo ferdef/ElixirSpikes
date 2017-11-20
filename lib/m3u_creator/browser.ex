@@ -1,7 +1,7 @@
 defmodule M3uCreator.Browser do
   def ls_r(path) do
     cond do
-      File.regular?(path) -> [path]
+      File.regular?(path) && Path.extname(path)==".mp3" -> [path]
       File.dir?(path) ->
         File.ls!(path)
         |> Enum.map(&Path.join(path, &1))
