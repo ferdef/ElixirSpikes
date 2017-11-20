@@ -25,14 +25,23 @@ defmodule M3uCreator do
 
   defp process({path, :concurrent}) do
     IO.puts "concurrent #{path}"
+    path
+    |> ls_folder
+    |> Enum.map(fn folder->
+      spawn(M3uCreator, :m3u_create, [folder])
+    end)
   end
 
   defp process(path) do
     path
     |> ls_folder
     |> Enum.each(fn folder->
-      IO.puts("Processing #{folder}")
-      ls_r(folder) |> write(folder, ".m3u")
+      m3u_create(folder)
     end)
+  end
+
+  def m3u_create(folder) do
+    IO.puts("Processing #{folder}")
+    ls_r(folder) |> write(folder, ".m3u")
   end
 end
